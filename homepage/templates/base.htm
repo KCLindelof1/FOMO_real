@@ -1,0 +1,124 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+
+        <title>FOMO</title>
+
+        ## add any site-wide scripts or CSS here; for example, jquery:
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="${ STATIC_URL }homepage/media/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <link href="${ STATIC_URL }homepage/media/bootstrap-3.3.7-dist/css/bootswatch.min.css" rel="stylesheet">
+
+        ## render the static file links with the same name as this template
+        <script src="/django_mako_plus/dmp-common.min.js"></script>
+        ${ django_mako_plus.links(self) }
+
+
+
+
+
+
+    </head>
+
+
+        ## Maintenance message
+        <div class="maintenance-info">
+            ## Comment this line out to remove the maintenance message.
+            Site under maintenance
+        </div>
+
+
+    <header>
+
+
+
+        <%doc>## Navbar
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">FOMO</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/index">Home</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/sections">Sections</a></li>
+              <%block name="navbar_itms">
+              </%block>
+            </ul>
+          </div>
+        </nav></%doc>
+
+
+        <%block name="navbar_stuff">
+
+        </%block>
+
+
+
+
+
+
+    </header>
+
+    <body>
+
+
+        ## Insert other pages into this block of "content"
+        <main>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <%block name="content_top">
+    ##                             Top Area content.
+                        </%block>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+##                     One of three columns
+                        <%block name="content_left">
+##                             Left Column content.
+                        </%block>
+                    </div>
+
+                    <div class="col-sm">
+##                     Two of three columns
+                    <%block name="content">
+##                         Site content goes here in sub-templates.
+                    </%block>
+                    </div>
+
+                    <div class="col-sm">
+##                     Three of three columns.
+                    <%block name="content_right">
+##                         Right Column Content.
+                    </%block>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <footer>
+            <%block name="body_footer">
+                <%! from datetime import datetime %>
+                &copy; Copyright ${ datetime.now().year } - FOMO, Inc.
+            </%block>
+        </footer>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,47 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #147871;
+    padding: 15px 20px;
+    border-top: 4px solid #606060;
+    border-bottom: 4px solid #606060;
+}
+
+/*.navbar-header {
+    background-color: mediumblue; !important;
+    border: none;
+
+    .navbar-brand {
+        float: left;
+        img {
+            height: 50px;
+        }
+    }
+}*/
+
+header h1 {
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 0;
+    padding: 15px;
+}
+
+.maintenance-info {
+    background-color: #d90030;
+    text-align: center;
+}
+
+.content_top {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
