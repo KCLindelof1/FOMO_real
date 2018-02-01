@@ -1,5 +1,8 @@
 from django.test import TestCase
 from account import models as amod
+from django.contrib.auth.models import Group, Permission, User
+from django.contrib.auth.contenttypes.models import ContentType
+
 
 # Create your tests here.
 class UserClassTestCase(TestCase):
@@ -39,3 +42,27 @@ class UserClassTestCase(TestCase):
 
     def test_something(self):
         '''New Stuff here'''
+
+    def test_create_groups(self):
+        g1 = Group()
+        g1.name = 'Salespeople'
+        g1.save()
+        self.u1.groups.add(g1)
+        self.u1.save()
+        self.assertTrue(self.u1.groups.filter(name='SalesPeople')) # Test to see if this user belongs to a certain group
+        # Alternate way to test
+        # self.asertTrue(self.u1.groups.filter(name='SalesPeople').count() > 1)
+        # self.asertTrue(self.u1.groups.get(id=g1.id))
+        # self.asertTrue(self.u1.groups.filter(name='SalesPeople').exists() )
+        g1.permissions.add(Permission.objects.get(id=4))
+        for p in Permission.objects.all():
+            print(p.codename)
+            print(p.name)
+            print(p.content_type)
+            # This next line actually would give every permission in the system to the user.
+            # self.u1.user_permissions.add(p)
+
+        p = Permission()
+        p.codename = 'change_product_price'
+        p.name = 'Change the price of a product'
+        p.content_type = ContentType.objects.get(id=1)
