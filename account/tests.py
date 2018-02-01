@@ -1,6 +1,6 @@
 from django.test import TestCase
 from account import models as amod
-from django.contrib.auth.models import Group, Permission, User
+from django.contrib.auth.models import Group, Permission, ContentType
 from django.contrib.auth.contenttypes.models import ContentType
 
 
@@ -17,6 +17,7 @@ class UserClassTestCase(TestCase):
         # ... do all the others
         self.u1.save()
 
+    # Create a user and save, then load again and compare
     def test_load_save_reg_user(self):
         '''Test creating, saving, and reloading a user'''
         # Comment this because we changed it to be in the SetUp
@@ -29,7 +30,7 @@ class UserClassTestCase(TestCase):
         # # ... do all the others
         # u1.save()
 
-        #alternate way: u2 = amod.User.objects.get(id=u1.id)
+        # alternate way: u2 = amod.User.objects.get(id=u1.id)
         u2 = amod.User.objects.get(email='lisa@simpsons.com')
         self.asertEqual(self.u1.first_name, u2.first_name)
         self.asertEqual(self.u1.last_name, u2.last_name)
@@ -37,13 +38,46 @@ class UserClassTestCase(TestCase):
         self.asertEqual(self.u1.password, u2.password)
         self.assertTrue(u2.check_password('password'))
 
-    def test_adding_groups(self):
-        '''Test adding a few groups'''
+    # Add groups to users and test some permissions
+    def test_adding_groups_try_permissions(self):
+        '''Test adding a few groups and test their permissions'''
+        # Create a copy of Lisa user object (u2)
+        u2 = amod.User.objects.get(email='lisa@simpsons.com')
+        # Create a new group
+        gp1 = Group()
+        gp1.save()
 
-    def test_something(self):
-        '''New Stuff here'''
+
+        # Add permissions to the group
+        gp1.group_permissions.add(XXX)
+
+        # Add u2 to group
+        u2.groups.add(gp1)
+
+        # Check the group and permissions was added properly
+        u2.groups.has_perm('XXX')
+
+    # Add permissions to users and test some permissions
+    def test_permissions_check_permissions(self):
+        '''Add permissions to users and test some permissions'''
+        # Create a copy of Lisa user object (u2)
+        u2 = amod.User.objects.get(email='lisa@simpsons.com')
+        # Add permissions to u2
+        u2.user_permissions.add(XXX)
+        # Check the permission
+        u2.has_perm(XXX)
+        self.assertTrue(u2.has_perm(XXX))
+
+    # Test authenticate/login, check with is_anonymous()
+    def test_authentication_login_check(self):
+        '''Test authenticate/login, check with is_anonymous()'''
+
+    # Test logout, check with is_anonymous()
+    def test_logout_check(self):
+        '''Test logout, check with is_anonymous()'''
 
     def test_create_groups(self):
+        ''''''
         g1 = Group()
         g1.name = 'Salespeople'
         g1.save()
@@ -67,27 +101,36 @@ class UserClassTestCase(TestCase):
         p.name = 'Change the price of a product'
         p.content_type = ContentType.objects.get(id=1)
 
+    # Test password with set_password() and check_password()
     def test_password_check(self):
+        '''Test password with set_password() and check_password()'''
         # Load a second User object with the attributes of the first object
         u2 = amod.User.objects.get(email='lisa@simpsons.com')
+
         # Check the 2 passwords
         self.assertTrue(self.u1.check_password('password'))
         self.assertTrue(u2.check_password('password'))
+
         # Change the second password
         u2.set_password('hello')
+
         # Recheck the 2 passwords
         self.assertTrue(self.u1.check_password('password'))
         self.assertTrue(u2.check_password('hello'))
+        self.assertNotEqual(self.u1.password, u2.password)
 
+    # Test regular field changes (first name, last name, etc.)
     def test_regular_field_changes(self):
+        '''Test regular field changes (first name, last name, etc.)'''
         # Load a second User object with the attributes of the first object
         u2 = amod.User.objects.get(email='lisa@simpsons.com')
+
         # Change the name attributes
         u2.first_name = 'Marge'
         u2.last_name = 'Not Simpson'
+
         # Test to ensure that the changes happened, but unchanged fields are still the same
         self.asertEqual(self.u1.first_name, u2.first_name)
         self.asertEqual(self.u1.last_name, u2.last_name)
         self.asertEqual(self.u1.email, u2.email)
         self.asertEqual(self.u1.password, u2.password)
-        self.assertTrue(u2.check_password('password'))
