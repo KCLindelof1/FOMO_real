@@ -80,15 +80,24 @@ class UserClassTest(TestCase):
         # Create a copy of Lisa user object (u2)
         u2 = amod.User.objects.get(email='lisa@simpsons.com')
 
+        # Create new permission
+        p = Permission()
+        p.codename = 'test_permission'
+        p.name = 'simply a test'
+        p.content_type = ContentType.objects.get(id=101)
+        p.save()
+
         # Add permissions to u2
-        u2.user_permissions.add(XXX)
+        u2.user_permissions.add(id=101)
 
         # Check the permission
-        self.assertTrue(u2.has_perm(XXX))
+        self.assertTrue(u2.has_perm(id=101))
 
     # Test authenticate/login, check with is_anonymous()
     def test_authentication_login_check(self):
         '''Test authenticate/login, check with is_anonymous()'''
+        # Authenticate the user
+        self.u1
 
     # Test logout, check with is_anonymous()
     def test_logout_check(self):
