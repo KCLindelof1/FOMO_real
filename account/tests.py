@@ -66,3 +66,28 @@ class UserClassTestCase(TestCase):
         p.codename = 'change_product_price'
         p.name = 'Change the price of a product'
         p.content_type = ContentType.objects.get(id=1)
+
+    def test_password_check(self):
+        # Load a second User object with the attributes of the first object
+        u2 = amod.User.objects.get(email='lisa@simpsons.com')
+        # Check the 2 passwords
+        self.assertTrue(self.u1.check_password('password'))
+        self.assertTrue(u2.check_password('password'))
+        # Change the second password
+        u2.set_password('hello')
+        # Recheck the 2 passwords
+        self.assertTrue(self.u1.check_password('password'))
+        self.assertTrue(u2.check_password('hello'))
+
+    def test_regular_field_changes(self):
+        # Load a second User object with the attributes of the first object
+        u2 = amod.User.objects.get(email='lisa@simpsons.com')
+        # Change the name attributes
+        u2.first_name = 'Marge'
+        u2.last_name = 'Not Simpson'
+        # Test to ensure that the changes happened, but unchanged fields are still the same
+        self.asertEqual(self.u1.first_name, u2.first_name)
+        self.asertEqual(self.u1.last_name, u2.last_name)
+        self.asertEqual(self.u1.email, u2.email)
+        self.asertEqual(self.u1.password, u2.password)
+        self.assertTrue(u2.check_password('password'))
