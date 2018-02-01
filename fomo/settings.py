@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_mako_plus',
+    'django_mako_plus',         # customr router
+    'cuser',                    # uses email field for unique user identifier
     'homepage',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#AUTH_USER_MODEL = 'cuser.CUser'
+AUTH_USER_MODEL = 'account.User'
 ROOT_URLCONF = 'fomo.urls'
 
 TEMPLATES = [
