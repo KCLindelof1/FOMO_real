@@ -5,7 +5,9 @@ from django.contrib.auth.contenttypes.models import ContentType
 
 
 # Create your tests here.
-class UserClassTestCase(TestCase):
+class UserClassTest(TestCase):
+
+    fixtures = [ 'data.yaml' ]
 
     def setUp(self):
         self.u1 = amod.User()
@@ -41,31 +43,47 @@ class UserClassTestCase(TestCase):
     # Add groups to users and test some permissions
     def test_adding_groups_try_permissions(self):
         '''Test adding a few groups and test their permissions'''
-        # Create a copy of Lisa user object (u2)
-        u2 = amod.User.objects.get(email='lisa@simpsons.com')
         # Create a new group
-        gp1 = Group()
-        gp1.save()
+        g1 = Group()
+        g1.name = 'Salespeople'
+        g1.save()
 
+        # Add group to user
+        self.u1.groups.add(g1)
+        self.u1.save()
 
-        # Add permissions to the group
-        gp1.group_permissions.add(XXX)
+        # Test to make sure u1 is in group g1
+        self.assertTrue(self.u1.groups.filter(name='SalesPeople'))  # Test to see if this user belongs to a certain group (salespeople)
 
-        # Add u2 to group
-        u2.groups.add(gp1)
+        # Create new permission
+        p = Permission()
+        p.codename = 'change_product_price'
+        p.name = 'Change the price of a product'
+        p.content_type = ContentType.objects.get(id=1)
+        p.save()
 
-        # Check the group and permissions was added properly
-        u2.groups.has_perm('XXX')
+        # Add permission to group
+        g1.permissions.add(Permission.objects.get(codename='change_product_price'))
+
+        # Test the permission
+        self.assertTrue(g1.has_perm(id=1))
+
+        # List the permissions
+        for p in Permission.objects.all():
+            print(p.codename)
+            print(p.name)
+            print(p.content_type)
 
     # Add permissions to users and test some permissions
     def test_permissions_check_permissions(self):
         '''Add permissions to users and test some permissions'''
         # Create a copy of Lisa user object (u2)
         u2 = amod.User.objects.get(email='lisa@simpsons.com')
+
         # Add permissions to u2
         u2.user_permissions.add(XXX)
+
         # Check the permission
-        u2.has_perm(XXX)
         self.assertTrue(u2.has_perm(XXX))
 
     # Test authenticate/login, check with is_anonymous()
