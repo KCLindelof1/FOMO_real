@@ -1,0 +1,13 @@
+<%inherit file="base_app.htm" />
+
+<%block name="content">
+
+##     Test Form
+    <form action="/account/testform/" method="POST">
+
+    ${ csrf_input }
+    ${ form.as_p() }
+    <input type="submit" value="Submit" />
+
+    </form>
+</%block>
