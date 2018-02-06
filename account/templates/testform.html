@@ -3,7 +3,8 @@
 <%block name="content">
 
 ##     Test Form
-    <form action="/account/testform/" method="POST">
+##     <form action="/account/testform/" method="POST">         This works too! But action isnt necessary
+    <form method="POST">
 
     ${ csrf_input }
     ${ form.as_p() }
