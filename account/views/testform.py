@@ -31,6 +31,7 @@ class TestForm(forms.Form):
     age = forms.IntegerField(label="Age")
     password = forms.PasswordInput()
     password2 = forms.PasswordInput()
+    widget = forms.PasswordInput        # Try this?
 
 
     # All our logic to mess with input data should be here:
