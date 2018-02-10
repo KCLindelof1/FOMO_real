@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'cuser',                    # uses email field for unique user identifier
     'homepage',
     'account',
-    'formlib'                   # Conan made this to help with forms
+    'formlib',                   # Conan made this to help with forms
 ]
 
 MIDDLEWARE = [
