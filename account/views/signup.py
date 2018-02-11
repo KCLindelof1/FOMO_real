@@ -62,13 +62,11 @@ class SignupForm(Formless):
             # don't allow the signup
         return self.cleaned_data
 
-    def clean_birthdate(self):
-        return
-
     def clean_email(self):
         # Ensure email is unique
-
-        return
+        if self.cleaned_data.get('email') == User.objects.all().get(email=self.cleaned_data.get('email')):
+            raise forms.ValidationError('Please enter a unique email address')
+        return self.cleaned_data
 
     def clean_password(self):
         # Ensure that password has 8+ characters, contains a number
