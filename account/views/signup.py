@@ -36,17 +36,17 @@ class SignupForm(Formless.Form):
         # state = models.TextField(null=True, blank=True)
         # zipcode = models.TextField(null=True, blank=True)
 
-        self.fields['fname'] = forms.CharField(label='First Name')
-        self.field['lname'] = forms.CharField(label='Last Name')
-        self.fields['email'] = forms.EmailField(label='Email')
-        self.fields['age'] = forms.IntegerField(label='Age')
-        # self.fields['password1'] = forms.PasswordInput(label='Password 1')
-        # self.fields['password2'] = forms.PasswordInput(label='Password 2')
-        self.fields['birthdate'] = forms.DateTimeField(label='Birthdate')
-        self.fields['address'] = forms.CharField(label='Address')
-        self.fields['city'] = forms.CharField(label='City')
-        self.fields['state'] = forms.CharField(label='State')
-        self.fields['zipcode'] = forms.CharField(label='Zipcode')
+        self.fields['fname'] = forms.CharField(label='First Name', required=True)
+        self.field['lname'] = forms.CharField(label='Last Name', required=True)
+        self.fields['email'] = forms.EmailField(label='Email', required=True)
+        self.fields['age'] = forms.IntegerField(label='Age', required=True)
+        # self.fields['password'] = forms.PasswordInput(min_length=5, label='Password', required=True)
+        # self.fields['password2'] = forms.PasswordInput(min_length=5, label='Password 2', required=True)
+        self.fields['birthdate'] = forms.DateTimeField(label='Birthdate', required=True)
+        self.fields['address'] = forms.CharField(label='Address', required=True)
+        self.fields['city'] = forms.CharField(label='City', required=True)
+        self.fields['state'] = forms.CharField(label='State', required=True)
+        self.fields['zipcode'] = forms.CharField(label='Zipcode', required=True)
 
     # All our logic to mess with input data should be here:
     def clean_age(self):
@@ -54,12 +54,25 @@ class SignupForm(Formless.Form):
         if age < 18:
             raise forms.ValidationError('You are not 18, please have a parent sign up')
             # don't allow the signup
-        return age + 1000
+        return self.cleaned_data
 
-    def clean_renewal_date(self):
+    def clean_birthdate(self):
         return
 
+    def clean_email(self):
+        return
+
+    def clean_password(self):
+
+
+    def clean_password2(self):
+        p = self.cleaned_data.get('password')
+
+        return p
+
+    # Catch-all Clean
     def clean(self):
+        # Clean the password inputs
         p1 = self.cleaned_data.get('password')
         p2 = self.cleaned_data.get('password2')
         if p1 != p2:
