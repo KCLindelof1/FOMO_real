@@ -24,9 +24,11 @@ def process_request(request):
 
 
 class TestForm(Formless):
+
     def init(self):
         self.fields['favorite_ice_cream'] = forms.CharField(label='Favorite Ice Cream')
         self.fields['renewal_date'] = forms.DateField(label="Renewal", help_text="Enter a date between now and 4 weeks (default 3).")
+
     age = forms.IntegerField(label="Age")
     password = forms.PasswordInput()
     password2 = forms.PasswordInput()
