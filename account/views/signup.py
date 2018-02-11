@@ -3,6 +3,9 @@ from formlib import Formless
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django_mako_plus import view_function
+from django.contrib.auth import authenticate, login,
+import re
+
 
 @view_function
 def process_request(request):
@@ -40,8 +43,8 @@ class SignupForm(Formless.Form):
         self.field['lname'] = forms.CharField(label='Last Name', required=True)
         self.fields['email'] = forms.EmailField(label='Email', required=True)
         self.fields['age'] = forms.IntegerField(label='Age', required=True)
-        # self.fields['password'] = forms.PasswordInput(min_length=5, label='Password', required=True)
-        # self.fields['password2'] = forms.PasswordInput(min_length=5, label='Password 2', required=True)
+        # self.fields['password'] = forms.CharField(widget=forms.PasswordInput(), min_length=8) # min_length=8, label='Password', required=True)
+        # self.fields['password2'] = forms.CharField(widget=forms.PasswordInput(), min_length=8) # PasswordInput(min_length=8, label='Password 2', required=True)
         self.fields['birthdate'] = forms.DateTimeField(label='Birthdate', required=True)
         self.fields['address'] = forms.CharField(label='Address', required=True)
         self.fields['city'] = forms.CharField(label='City', required=True)
@@ -63,10 +66,12 @@ class SignupForm(Formless.Form):
         return
 
     def clean_password(self):
-
+        return
 
     def clean_password2(self):
+        # Ensure that password has 8+ characters, contains a number
         p = self.cleaned_data.get('password')
+        if p.re
 
         return p
 
@@ -78,3 +83,13 @@ class SignupForm(Formless.Form):
         if p1 != p2:
             raise forms.ValidationError('Please ensure the passwords match.')
         return self.cleaned_data
+
+    def commit(self):
+        '''Process form action'''
+        # create user object
+        
+        # save
+        # authenticate()
+        # login()
+        self.user = authenticate(email=self.cleaned_data.get('email'), password=self.cleaned_data.get('password'))
+
