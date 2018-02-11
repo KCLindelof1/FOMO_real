@@ -16,8 +16,8 @@ def process_request(request):
     form = LoginForm(request)
     if form.is_valid():
         form.commit()
-        raise RedirectException('/account/')
-        # return HttpResponseRedirect('/')
+        # raise RedirectException('/account/index/')
+        return HttpResponseRedirect('/account/index/')
 
     # render the template
     context = {
@@ -25,7 +25,7 @@ def process_request(request):
     }
     return request.dmp_render('login.html', context)
 
-class LoginForm(Formless.Form):
+class LoginForm(Formless):
     '''Login Form'''
 
     def init(self):

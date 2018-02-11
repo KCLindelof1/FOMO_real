@@ -63,7 +63,11 @@ class SignupForm(Formless):
         return self.cleaned_data
 
     def clean_email(self):
-        # Ensure email is unique
+        #  Ensure email is unique
+
+        # Alternate way to check?
+        # if bool(amod.User.objects.get(email=self.cleaned_data.get('email'))) == True
+
         if self.cleaned_data.get('email') == User.objects.all().get(email=self.cleaned_data.get('email')):
             raise forms.ValidationError('Please enter a unique email address')
         return self.cleaned_data
