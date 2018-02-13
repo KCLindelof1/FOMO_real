@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'homepage',
     'account',
     'formlib',                   # Conan made this to help with forms
+    'manager',
+    'catalog',
 ]
 
 MIDDLEWARE = [
