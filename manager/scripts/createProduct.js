@@ -1,4 +1,12 @@
 $(function() {
+
+    $('#id_pid').closest('p').hide(1000);
+    $('#id_max_rental_days').closest('p').hide(1000);
+    $('#id_retire_date').closest('p').hide(1000);
+    $('#id_quantity').closest('p').hide(1000);
+    $('#id_reorder_trigger').closest('p').hide(1000);
+    $('#id_reorder_quantity').closest('p').hide(1000);
+
     var choice = $('#id_type');
     choice.on('change', function() {
         console.log(choice.val());
