@@ -1,0 +1,27 @@
+<%inherit file="base_app.htm" />
+
+<%block name="content">
+
+    ${ form }
+
+    <div >
+        <button type="button" class="btn btn-info" href="/manager/createProduct">Create Product</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Name</th
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- For Loop for each product -->
+        {% for p in Product %}
+        </tbody>
+    </table>
+
+</%block>
