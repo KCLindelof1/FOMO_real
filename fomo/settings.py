@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'formlib',                   # Conan made this to help with forms
     'manager',
     'catalog',
+    'polymorphic',              # The base class for our products
 ]
 
 MIDDLEWARE = [
@@ -162,9 +163,9 @@ WSGI_APPLICATION = 'fomo.wsgi.application'
 # Here is the new database that needst
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
