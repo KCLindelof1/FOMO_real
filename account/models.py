@@ -5,7 +5,7 @@ from cuser.models import AbstractCUser
 class User(AbstractCUser):
     fname = models.TextField(null=True, blank=True)
     lname = models.TextField(null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True, unique=True)
     birthdate = models.DateTimeField(null=True)
     address = models.TextField(null=True, blank=True)
     city = models.TextField(null=True, blank=True)
