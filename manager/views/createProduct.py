@@ -29,7 +29,7 @@ class createProductForm(Formless):
         self.fields['type'] = forms.ChoiceField(choices=Product.TYPE_CHOICES, label="Type")
         self.fields['status'] = forms.ChoiceField(choices=Product.STATUS_CHOICES, label='Status')
         self.fields['name'] = forms.CharField(label="Name", required=True)
-        self.fields['description'] = forms.CharField(labe="description", required=True)
+        self.fields['description'] = forms.CharField(label="description", required=True)
         self.fields['category'] = forms.ModelChoiceField(
             queryset=cmod.Category.objects.all(),
             label="category")
