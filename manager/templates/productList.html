@@ -1,0 +1,39 @@
+<%inherit file="base_app.htm" />
+
+<%block name="content">
+    <div class="text-center">
+        <h1>Product List</h1><hr>
+        <a href="/manager/createProduct/"><button type="button" class="btn btn-primary">Create Product</button></a>
+        <p></p>
+    </div>
+    <div class="container container-fluid">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            %for p in products:
+                <tr>
+                    <td>${p.category.name}</td>
+                    <td>${p.TITLE}</td>
+                    <td>${p.name}</td>
+                    <td>${p.price}</td>
+                    %if p.TITLE == 'Bulk Product':
+                        <td>${p.quantity}</td>
+                    %else:
+                        <td>1</td>
+                    %endif
+                    <td><p><a href="/manager/editProduct/${p.id}">Edit</a> &nbsp; <a href="/manager/deleteProduct/${p.id}">Delete</a></p></td>
+                </tr>
+            %endfor
+            </tbody>
+        </table>
+    </div>
+</%block>
