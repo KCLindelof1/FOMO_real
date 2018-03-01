@@ -16,7 +16,7 @@ def process_request(request):
     form = createProductForm(request)
     if form.is_valid():
         form.commit()
-        return HttpResponseRedirect('/catalog/productList')
+        return HttpResponseRedirect('/manager/productList')
 #render the template
     context = {
         'form': form,
@@ -98,31 +98,74 @@ class createProductForm(Formless):
 def commit(self):
     '''Process form action'''
     type = self.cleaned_data.get('type')
-    if self.type == 'BulkProduct':
+    # if type == 'BulkProduct':
+    #     self.product = cmod.BulkProduct()
+    #     # unique
+    #     self.product.quantity = self.cleaned_data.get('quantity')
+    #     self.product.reorder_trigger = self.cleaned_data.get('reorder_trigger')
+    #     self.product.reorder_quantity = self.cleaned_data.get('reorder_quantity')
+    # elif type == 'IndividualProduct':
+    #     self.product = cmod.IndividualProduct()
+    #     # unique
+    #     self.product.pid = self.cleaned_data.get('pid')
+    # elif type == 'RentalProduct':
+    #     self.product = cmod.RentalProduct()
+    #     # unique
+    #     self.product.pid = self.cleaned_data.get('pid')
+    #     self.product.max_rental_days = self.cleaned_data.get('max_rental_days')
+    #     self.product.retire_date = self.cleaned_data.get('retire_date')
+    #
+    # # Generic product information
+    # self.product.create_date = self.cleaned_data.get('created_date')
+    # self.product.last_modified = self.cleaned_data.get('last_modified')
+    # self.product.name = self.cleaned_data.get('name')
+    # self.product.description = self.cleaned_data.get('description')
+    # self.product.status = self.cleaned_data.get('status')
+    # self.product.category = self.cleaned_data.get('category')
+    # self.product.price = self.cleaned_data.get('price')
+
+    # Save
+    # self.product.save()
+
+    # Try this way?
+    if type == 'IndividualProduct':
+        self.product = cmod.IndividualProduct()
+        self.product.create_date = self.cleaned_data.get('create_date')
+        self.product.last_modified = self.cleaned_data.get('last_modified')
+        self.product.status = self.cleaned_data.get('status')
+        self.product.name = self.cleaned_data.get('name')
+        self.product.description = self.cleaned_data.get('description')
+        self.product.category = self.cleaned_data.get('category')
+        self.product.price = self.cleaned_data.get('price')
+        #   unique fields
+        self.product.pid = self.cleaned_data.get('pid')
+    elif type == 'BulkProduct':
         self.product = cmod.BulkProduct()
-        # unique
+        self.product.create_date = self.cleaned_data.get('create_date')
+        self.product.last_modified = self.cleaned_data.get('last_modified')
+        self.product.status = self.cleaned_data.get('status')
+        self.product.name = self.cleaned_data.get('name')
+        self.product.description = self.cleaned_data.get('description')
+        self.product.category = self.cleaned_data.get('category')
+        self.product.price = self.cleaned_data.get('price')
+        #   unique fields
         self.product.quantity = self.cleaned_data.get('quantity')
         self.product.reorder_trigger = self.cleaned_data.get('reorder_trigger')
         self.product.reorder_quantity = self.cleaned_data.get('reorder_quantity')
-    elif self.type == 'IndividualProduct':
-        self.product = cmod.IndividualProduct()
-        # unique
-        self.product.pid = self.cleaned_data.get('pid')
-    elif self.type == 'RentalProduct':
+    elif type == 'RentalProduct':
         self.product = cmod.RentalProduct()
-        # unique
+        self.product.create_date = self.cleaned_data.get('create_date')
+        self.product.last_modified = self.cleaned_data.get('last_modified')
+        self.product.status = self.cleaned_data.get('status')
+        self.product.name = self.cleaned_data.get('name')
+        self.product.description = self.cleaned_data.get('description')
+        self.product.category = self.cleaned_data.get('category')
+        self.product.price = self.cleaned_data.get('price')
+        #   unique fields
         self.product.pid = self.cleaned_data.get('pid')
         self.product.max_rental_days = self.cleaned_data.get('max_rental_days')
         self.product.retire_date = self.cleaned_data.get('retire_date')
-
-    # Generic product information
-    self.product.create_date = self.cleaned_data.get('created_date')
-    self.product.last_modified = self.cleaned_data.get('last_modified')
-    self.product.name = self.cleaned_data.get('name')
-    self.product.description = self.cleaned_data.get('description')
-    self.product.status = self.cleaned_data.get('status')
-    self.product.category = self.cleaned_data.get('category')
-    self.product.price = self.cleaned_data.get('price')
-
-    # Save
     self.product.save()
+
+
+
