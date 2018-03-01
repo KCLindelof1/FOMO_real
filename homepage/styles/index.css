@@ -3,5 +3,17 @@ h4.utc-time {
 }
 
 .color {
-    background-color: #84679a;
+    background-color: #46b8da;
+}
+
+.text1 {
+    font-size: 16px;
+}
+
+.text2 {
+    font-size: 12px;
+}
+
+.a {
+    padding: 300px;
 }
