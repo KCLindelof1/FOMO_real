@@ -49,3 +49,7 @@ main {
 footer {
     text-align: center;
 }
+
+#skip_to_main_content {
+    display: none;
+}

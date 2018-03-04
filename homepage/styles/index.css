@@ -20,8 +20,9 @@ h4.utc-time {
     /*background-color: #FF7400;*/
     /*background-image: url("homepage/media/images/Boombox.jpg");*/
     /*background-image: url("../../media/images/Boombox.jpg");*/
+    background-image: url("/static/homepage/media/images/Boombox.jpg");
     /*background-image: image(homepage/media/images/Boombox.jpg);*/
-    background-image: image('/static/homepage/media/images/Boombox.jpg');
+    /*background-image: image("/static/homepage/media/images/Boombox.jpg");*/
     /*background-image: image(../../media/images/Boombox.jpg);*/
     /*background-image: url("Boombox.jpg");*/
 
@@ -34,7 +35,7 @@ h4.utc-time {
 
     /*background-image: url("http://markinternational.info/data/out/27/218767267-backgrounds-for-music.jpg");*/
     /*background-color: #FF7400;*/
-    /*background-size: 300px 100px;*/
+    background-size: 500px 100px;
 
 }
 
