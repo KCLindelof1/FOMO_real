@@ -13,3 +13,16 @@ h4.utc-time {
 .text2 {
     font-size: 14px;
 }
+
+.content_homepage {
+    padding-bottom: 350px;
+    background-image: url("homepage/media/images/Boombox.jpg");
+    background-image: image("/homepage/media/images/Boombox.jpg");
+    background-color: #191a1b;
+}
+
+.productListButton {
+    text-align: right;
+    padding-top: 150px;
+    padding-right: 250px;
+}
