@@ -15,14 +15,31 @@ h4.utc-time {
 }
 
 .content_homepage {
-    padding-bottom: 350px;
-    background-image: url("homepage/media/images/Boombox.jpg");
-    background-image: image("/homepage/media/images/Boombox.jpg");
-    background-color: #191a1b;
+    padding-bottom: 150px;
+
+    /*background-color: #FF7400;*/
+    /*background-image: url("homepage/media/images/Boombox.jpg");*/
+    /*background-image: url("../../media/images/Boombox.jpg");*/
+    /*background-image: image(homepage/media/images/Boombox.jpg);*/
+    background-image: image('/static/homepage/media/images/Boombox.jpg');
+    /*background-image: image(../../media/images/Boombox.jpg);*/
+    /*background-image: url("Boombox.jpg");*/
+
+    /*background-image: url("homepage/media/images/Boombox2.png");*/
+    /*background-image: url("../../media/images/Boombox2.png");*/
+    /*background-image: image(homepage/media/images/Boombox2.png);*/
+    /*background-image: image(../../media/images/Boombox2.png);*/
+    /*background-image: url("Boombox2.png");*/
+    /*background-image: url("http://www/.fullhdwpp.com/wp-content/uploads/Boombox_www.FullHDWpp.com_.jpg?x69613");*/
+
+    /*background-image: url("http://markinternational.info/data/out/27/218767267-backgrounds-for-music.jpg");*/
+    /*background-color: #FF7400;*/
+    /*background-size: 300px 100px;*/
+
 }
 
 .productListButton {
     text-align: right;
     padding-top: 150px;
-    padding-right: 250px;
+    padding-right: 350px;
 }
