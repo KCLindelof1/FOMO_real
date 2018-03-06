@@ -66,6 +66,7 @@
     </header>
 
     <body>
+        <a id="skip_to_main_content" href="#content_start">Skip to main content</a>
 
 
         ## Insert other pages into this block of "content"
@@ -95,6 +96,16 @@
 
             <div class="container">
                 <div class="row">
+##              This row is for the homepage/index main screen
+                    <div class="col-xl-12">
+##                  This column is for the text / title type stuff
+                        <%block name="content_homepage">
+##                             Homepage specific block content
+                        </%block>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-sm-4">
 ##                     One of three columns
                         <%block name="content_left">
@@ -104,6 +115,7 @@
 
                     <div class="col-sm-4">
 ##                     Two of three columns
+                    <div id="content_start"></div>
                     <%block name="content">
 ##                         Site content goes here in sub-templates.
                     </%block>
@@ -114,6 +126,15 @@
                     <%block name="content_right">
 ##                         Right Column Content.
                     </%block>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12">
+##                     One of three columns
+                        <%block name="content_bottom">
+##                             Bottom content.
+                        </%block>
                     </div>
                 </div>
             </div>
