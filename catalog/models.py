@@ -37,6 +37,9 @@ from polymorphic.models import PolymorphicModel
 
 
 # Create your models here.
+from fomo import settings
+
+
 class Category(models.Model):
     """Category for products"""
     create_date = models.DateTimeField(auto_now_add=True)
@@ -67,6 +70,31 @@ class Product(PolymorphicModel):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=7, decimal_places=2)
 
+    def image_url(self):
+        '''(Returns First Image) If product has no images, return image_unavailable.gif'''
+        # load temporary url to catch any products with no images
+        url = settings.STATIC_URL + "/catalog/media/products/" + "image_unavailable.gif"
+
+        # Check if product has associated image
+        if (ProductImage.filename != None):
+            # Build the URL: static + hardcoded path + filename
+            url = settings.STATIC_URL + "/catalog/media/products/" + ProductImage.filename
+
+        # return the URL
+        return url
+
+
+    def image_urls(self):
+        '''(Returns list of all images) If product has no images, return [ image_unavailable.gif ]'''
+        # Check if product has associated images
+        if (ProductImage.filename != None):
+            # Create list to add the
+
+            # Build the URL for each image
+
+            url =
+        # return image_unavailable.gif
+
 
 class BulkProduct(Product):
     TITLE = 'Bulk Product'
@@ -91,6 +119,6 @@ class ProductImage(models.Model):
     '''An Image for a product'''
     create_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now_add=True)
-    Filename = models.TextField()
-    Product = models.ForeignKey('Product', on_delete=modelsCASCADE, related_name='images')
+    filename = models.TextField()
+    product = models.ForeignKey('Product', on_delete=modelsCASCADE, related_name='images')
     NOT_FOUND_PRODUCT_IMAGE = ProductImage()
