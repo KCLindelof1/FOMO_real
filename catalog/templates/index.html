@@ -1,9 +1,18 @@
-<%inherit file="base.htm" />
+<%inherit file="/homepage/templates/base_ajax.htm" />
 
 <%block name="content">
-    <div class="content">
-        <h3>Congratulations -- you've successfully created a new django-mako-plus app!</h3>
-        <h4>Next Up: Go through the django-mako-plus tutorial and add Javascript, CSS, and urlparams to this page.</h4>
-        <h4 class="utc-time">Current time in UTC: ${ utc_time }</h4>
-    </div>
+
+    <ul id="product_list">
+        <li class="product_tile">
+            <div class="title">Tire Swing</div>
+        </li>
+        <li class="product_tile">
+            <div class="title">Chocolate Milk</div>
+        </li>
+        <li class="product_tile">
+##             <div><img ... </div>
+            <div class="title">Chocolate Iced, Chocolate Donut</div>
+        </li>
+    </ul>
+
 </%block>
