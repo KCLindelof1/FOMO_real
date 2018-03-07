@@ -3,6 +3,7 @@
 # set up django first
 import os, os.path
 import django
+import sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fomo.settings")
 django.setup()
 
@@ -28,7 +29,7 @@ areyousure = input('''
 if areyousure.lower() != 'yes':
     print()
     print('  Wise choice.')
-    sys.exit(1)
+    sys.exit()
 
 
 
@@ -102,7 +103,7 @@ for fn in os.listdir('catalog/media/products/'):
 random.shuffle(filenames)
 images = cycle(filenames)
 
-# add 0-4 images to each product
+# add 1-4 images to each product
 for product in cmod.Product.objects.all():
     for i in range(random.randint(1, 5)):
         pi = cmod.ProductImage()
