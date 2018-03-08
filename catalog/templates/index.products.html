@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<%inherit file="base_ajax.htm" />
 
-</body>
-</html>
+## This is what the tile output should be. Need to use a loop to create this though
+<ul id="catalog_list">
+    <li class="product_tile">
+        <div><img class="product_image" src="/static/catalog/media/products/bananas.jpg"/></div>
+        <div class="product_tile">Bananas</div>
+        <div class="product_price alert alert-info">$912.29</div>
+        <div>(Sheet Music)</div>
+    </li>
+##     this would be the second tile on the page
+    <li class="product_tile">
+        <div><img class="product_image" src="/static/catalog/media/products/bananas.jpg"/></div>
+        <div class="product_tile">Bananas</div>
+        <div class="product_price alert alert-info">$912.29</div>
+        <div>(Sheet Music)</div>
+    </li>
+
+</ul>
