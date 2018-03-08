@@ -83,15 +83,14 @@ class Product(PolymorphicModel):
     #     # return the URL
     #     return url
 
-        def image_url(self):
-            root = "catalog/media/products/"
-            if len(self.images.all()) > 0:
-              url = settings.STATIC_URL + root + self.images.all()[0].filename
-              return url
-            else:
-              url = settings.STATIC_URL + root + "image_unavailable.gif"
-              return url
-
+    def image_url(self):
+        root = "catalog/media/products/"
+        if len(self.images.all()) > 0:
+            url = settings.STATIC_URL + root + self.images.all()[0].filename
+            return url
+        else:
+            url = settings.STATIC_URL + root + "image_unavailable.gif"
+            return url
 
     # def image_urls(self):
     #     '''(Returns list of all images) If product has no images, return [ image_unavailable.gif ]'''
@@ -104,21 +103,19 @@ class Product(PolymorphicModel):
     #         url =
     #     # return image_unavailable.gif
 
-
-        def image_urls(self):
-            root = "catalog/media/products/"
-            li = []
-            if len(self.images.all()) > 0:
-                for im in self.images.all():
-                    url = settings.STATIC_URL + root + im.filename
-                    li.append(url)
-                return li
-
-            else:
-                url = settings.STATIC_URL + "catalog/media/products/image_unavailable.gif"
+    def image_urls(self):
+        root = "catalog/media/products/"
+        li = []
+        if len(self.images.all()) > 0:
+            for im in self.images.all():
+                url = settings.STATIC_URL + root + im.filename
                 li.append(url)
-                return li
+            return li
 
+        else:
+            url = settings.STATIC_URL + "catalog/media/products/image_unavailable.gif"
+            li.append(url)
+            return li
 
 class BulkProduct(Product):
     TITLE = 'Bulk Product'
