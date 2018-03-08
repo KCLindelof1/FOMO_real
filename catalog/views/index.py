@@ -18,3 +18,10 @@ def products(request, cat: cmod.Category = None, page_num: int = 1):
         query = query.filter(…) # *something like category = cat?*
         query = query[0:6] # *this is pagination, this would get pages 0,1,2,3,4,5*
     return request.dmp.render("index.products.html" ) # *inherits from base_ajax.html*
+
+
+# need to load all categories into a loop that will put them into an unordered list <ul> as individual list items <li>
+cat_list =
+
+for cmod.Product.objects.all()
+

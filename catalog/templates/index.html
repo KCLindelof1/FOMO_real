@@ -1,18 +1,53 @@
-<%inherit file="/homepage/templates/base_ajax.htm" />
+## <%inherit file="/homepage/templates/base_ajax.htm" />
+##
+## <%block name="content">
+##
+##     <ul id="product_list">
+##         <li class="product_tile">
+##             <div class="title">Tire Swing</div>
+##         </li>
+##         <li class="product_tile">
+##             <div class="title">Chocolate Milk</div>
+##         </li>
+##         <li class="product_tile">
+## ##             <div><img ... </div>
+##             <div class="title">Chocolate Iced, Chocolate Donut</div>
+##         </li>
+##     </ul>
+##
+## </%block>
+##
+## <%block name="content-left">
+##
+## </%block>
+
+
+##
+<%inherit file="app_base.htm" />
+ <%namespace name="ic" module="homepage.icons"/>
+
+<%block name="content-left">
+    <ul id="category_list">
+        <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/">All Products</a></li>
+        %for cat in categories:
+            <li class="${ 'active' if category == cat else '' }"><a href="/catalog/index/${ cat.id }">${ cat.name}</a></li>
+        %endfor
+    </ul>
+</%block>
+
+
 
 <%block name="content">
+    <h1 class="text-center">${ 'Products' if category is None else category.name }</h1>
 
-    <ul id="product_list">
-        <li class="product_tile">
-            <div class="title">Tire Swing</div>
-        </li>
-        <li class="product_tile">
-            <div class="title">Chocolate Milk</div>
-        </li>
-        <li class="product_tile">
-##             <div><img ... </div>
-            <div class="title">Chocolate Iced, Chocolate Donut</div>
-        </li>
-    </ul>
+    <div id="paginator" class="text-right">
+##         He'll explain ic:svg
+        <a id="previous page"><%ic:svg name="backward2"/></a>
+        Page <span id="page_number">1</span> of ${ num_pages }
+        <a id="next_page"><%ic:svg name="forward3"/></a>
+    </div>
 
+    <div id="catalog_container">
+        <div id="catalog"></div>
+    </div>
 </%block>
