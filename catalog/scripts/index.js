@@ -11,5 +11,7 @@
 $(function(context) {
     return function() {
         //code here
+
+    //
     }
 }(DMP_CONTEXT.get()))

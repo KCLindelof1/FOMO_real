@@ -82,8 +82,17 @@ class Product(PolymorphicModel):
     #
     #     # return the URL
     #     return url
-    #
-    #
+
+        def image_url(self):
+            root = "catalog/media/products/"
+            if len(self.images.all()) > 0:
+              url = settings.STATIC_URL + root + self.images.all()[0].filename
+              return url
+            else:
+              url = settings.STATIC_URL + root + "image_unavailable.gif"
+              return url
+
+
     # def image_urls(self):
     #     '''(Returns list of all images) If product has no images, return [ image_unavailable.gif ]'''
     #     # Check if product has associated images
@@ -94,6 +103,21 @@ class Product(PolymorphicModel):
     #
     #         url =
     #     # return image_unavailable.gif
+
+
+        def image_urls(self):
+            root = "catalog/media/products/"
+            li = []
+            if len(self.images.all()) > 0:
+                for im in self.images.all():
+                    url = settings.STATIC_URL + root + im.filename
+                    li.append(url)
+                return li
+
+            else:
+                url = settings.STATIC_URL + "catalog/media/products/image_unavailable.gif"
+                li.append(url)
+                return li
 
 
 class BulkProduct(Product):
@@ -115,10 +139,9 @@ class RentalProduct(Product):
     retire_date = models.DateField(null=True, blank=True)
 
 
-# class ProductImage(models.Model):
-#     '''An Image for a product'''
-#     create_date = models.DateTimeField(auto_now_add=True)
-#     last_modified = models.DateTimeField(auto_now_add=True)
-#     filename = models.TextField()
-#     product = models.ForeignKey('Product', on_delete=modelsCASCADE, related_name='images')
-#     NOT_FOUND_PRODUCT_IMAGE = ProductImage()
+class ProductImage(models.Model):
+    '''An Image for a product'''
+    create_date = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now_add=True)
+    filename = models.TextField()
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='images')
