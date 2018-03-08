@@ -1,32 +1,6 @@
-## <%inherit file="/homepage/templates/base_ajax.htm" />
-##
-## <%block name="content">
-##
-##     <ul id="product_list">
-##         <li class="product_tile">
-##             <div class="title">Tire Swing</div>
-##         </li>
-##         <li class="product_tile">
-##             <div class="title">Chocolate Milk</div>
-##         </li>
-##         <li class="product_tile">
-## ##             <div><img ... </div>
-##             <div class="title">Chocolate Iced, Chocolate Donut</div>
-##         </li>
-##     </ul>
-##
-## </%block>
-##
-## <%block name="content-left">
-##
-## </%block>
-
-
-##
 <%inherit file="base_app.html" />
-<%namespace name="ic" module="homepage.icons"/>
 
-<%block name="content-left">
+<%block name="content_left">
     <h1>Categories</h1>
     <ul id="category_list">
         <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/">All Products</a></li>
@@ -36,13 +10,10 @@
     </ul>
 </%block>
 
-
-
 <%block name="content">
     <h1 class="text-center">${ 'Products' if category is None else category.name }</h1>
 
     <div id="paginator" class="text-right">
-##         He'll explain ic:svg
         <a id="previous page"></a>
         Page <span id="page_number">1</span> of ${ num_pages }
         <a id="next_page"></a>

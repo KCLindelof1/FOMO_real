@@ -12,7 +12,7 @@ def process_request(request, cat_id = 0):
         jscontext('category'): category,
         jscontext('pnum'): 1,
     }
-    return request.render('index.html', context)
+    return request.dmp.render('index.html', context)
 
 @view_function
 def products(request, cat: cmod.Category = None, pnum: int = 1):
@@ -26,7 +26,7 @@ def products(request, cat: cmod.Category = None, pnum: int = 1):
 
 
 # need to load all categories into a loop that will put them into an unordered list <ul> as individual list items <li>
-cat_list =
-
-for cmod.Product.objects.all()
+# cat_list =
+#
+# for cmod.Product.objects.all()
 

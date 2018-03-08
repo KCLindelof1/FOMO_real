@@ -1,37 +1,3 @@
-# from django.db import models
-# from polymorphic.models import PolymorphicModel
-#
-#
-# # Create your models here.
-# class Product(PolymorphicModel):
-#     product_name = models.TextField(null=True, blank=True)
-#     product_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
-#     product_desc = models.TextField(null=True, blank=True)
-#     product_status = models.TextField(null=True, blank=True)
-#     product_purchase_date = models.DateTimeField(null=True, blank=True)
-#     product_quantity = models.IntegerField(null=True, blank=True)
-#     product_created_time = models.DateTimeField(null=True, blank=True)
-#     product_updated_time = models.DateTimeField(null=True, blank=True)
-#
-#
-# class BulkProduct(Product):
-#     bulkproduct_spaceholder = models.TextField()
-#
-#
-# class IndividualProduct(Product):
-#     individualproduct_spaceholder = models.TextField()
-#
-#
-# class RentalProduct(Product):
-#     rentalproduct_spaceholder = models.TextField()
-#
-#
-# class Category():
-#     cat_name = models.TextField(null=True, blank=True)
-#     cat_desc = models.TextField(null=True, blank=True)
-#
-
-# --------------------
 from django.db import models
 from polymorphic.models import PolymorphicModel
 
