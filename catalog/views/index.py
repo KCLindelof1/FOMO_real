@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from catalog import models as cmod
 
 @view_function
-def process_request(request, cat_id):
+def process_request(request, cat_id = 0):
     category = cat_id
     cat = cmod.Category.objects.all()
     context = {
@@ -20,8 +20,8 @@ def products(request, cat: cmod.Category = None, pnum: int = 1):
     query = cmod.Product.objects.all()
     # Check for category
     if cat is not None:
-        query = query.filter(…) # *something like category = cat?*
-        product_count = query.count()/6 # *this is pagination, this would get pages 0,1,2,3,4,5*
+        query = query.filter(name=cat) # *something like category = cat?*
+        page_count = query.count()/6 # *this is pagination, this would get pages 0,1,2,3,4,5*
     return request.dmp.render("index.products.html" ) # *inherits from base_ajax.html*
 
 

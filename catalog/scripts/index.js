@@ -11,7 +11,9 @@
 $(function(context) {
     return function() {
         //code here
-        $('#catalog').load("catalog/index.products/" + context.category + "/1/")
+        $('#catalog').load("catalog/index.products/" + context.category + "/" + context.pnum + "/")
+            console.log(context.category)
+            console.log(context.pnum)
 
     //
     }

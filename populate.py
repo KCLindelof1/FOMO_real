@@ -34,11 +34,11 @@ if areyousure.lower() != 'yes':
 ##################################
 ###   Products
 
-cmod.ProductImage.objects.all().delete()
 cmod.IndividualProduct.objects.all().delete()
 cmod.RentalProduct.objects.all().delete()
 cmod.BulkProduct.objects.all().delete()
 cmod.Category.objects.all().delete()
+cmod.ProductImage.objects.all().delete()
 
 
 # categories

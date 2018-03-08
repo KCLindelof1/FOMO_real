@@ -27,6 +27,7 @@
 <%namespace name="ic" module="homepage.icons"/>
 
 <%block name="content-left">
+    <h1>Categories</h1>
     <ul id="category_list">
         <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/">All Products</a></li>
         %for cat in categories:

@@ -117,6 +117,7 @@ class Product(PolymorphicModel):
             li.append(url)
             return li
 
+
 class BulkProduct(Product):
     TITLE = 'Bulk Product'
     quantity = models.IntegerField()
