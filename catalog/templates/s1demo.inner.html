@@ -1,0 +1,12 @@
+ <%inherit file="/homepage/templates/base_app.html" />
+## <%inherit file="/base_ajax.htm" />
+
+<%block name="content_top">
+    <h1>Hello World</h1>
+</%block>
+
+
+##  alternative to above way: (above is better though)
+${ django_mako_plus.links(self) }
+
+    <h1>Hello World</h1>

@@ -5,12 +5,10 @@ from catalog import models as cmod
 
 @view_function
 def process_request(request):
-    products = cmod.Product.objects.all()
 
-    context = {
-        # # sent to index.html:
-        # 'utc_time': utc_time,
-        # # sent to index.html and index.js:
-        # jscontext('utc_epoch'): utc_time.timestamp(),
-    }
-    return request.dmp.render('s1demo.products.html', {'product': products})
+    return request.dmp.render('s1demo.html', {})
+
+@view_function
+def inner(request):
+
+    return request.dmp.render('s1demo.inner.html', {})
