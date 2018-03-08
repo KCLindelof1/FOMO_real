@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
-
 # set up django first
 import os, os.path
 import django
 import sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fomo.settings")
 django.setup()
-
 # regular imports
 from catalog import models as cmod
-
 import random
 from itertools import cycle
 
