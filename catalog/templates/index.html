@@ -4,9 +4,10 @@
     <h1>Categories</h1>
     <ul id="category_list">
         <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/">All Products</a></li>
-        %for cat in categories:
-            <li class="${ 'active' if category == cat else '' }"><a href="/catalog/index/${ cat.id }">${ cat.name}</a></li>
-        %endfor
+        % for c in cat:
+##             <li><a href="/catalog/index/${ cat.id }">${ cat.name}</a></li>
+            <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/${ cat.id }">${ cat.name}</a></li>
+        % endfor
     </ul>
 </%block>
 

@@ -5,6 +5,7 @@ from catalog import models as cmod
 
 @view_function
 def process_request(request, cat_id = 0):
+    # category = cmod.Category.objects.filter(cat_id)
     category = cat_id
     cat = cmod.Category.objects.all()
     context = {
