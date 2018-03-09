@@ -28,7 +28,7 @@ h4.utc-time {
     padding: 12px;
     border: 2px solid #cccccc;
     border-radius: 4px;
-    width: 300px;
+    width: 335px;
     vertical-align: top;
     min-height: 100px;
     height: 100%;
@@ -36,4 +36,8 @@ h4.utc-time {
 
 #previous_page, #next_page {
     cursor: pointer;
+}
+
+.activeCat {
+    font-weight: bold;
 }

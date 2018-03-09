@@ -1,13 +1,7 @@
  <%inherit file="base_ajax.htm" />
 
  <%block name="content">
-##     <h1 class="text-center">
-##         %if gory == 'All Products':
-##             All Products
-##         %else:
-##             ${gory.name}
-##         %endif
-##     </h1>
+
     <h2 class="text-center">${ cName }</h2>
     <ul class="noBullets">
     %for prod in qry:

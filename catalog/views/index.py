@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django_mako_plus import view_function, jscontext
 from datetime import datetime
 from catalog import models as cmod
@@ -37,10 +38,18 @@ def products(request, cat: cmod.Category=None, pNum: int=1):
         qry = cmod.Product.objects.all()
         cName = 'All Products'
 
+    pMax = qry.count()/6
+    pMax = math.ceil(pMax)
     qry = qry[((pNum - 1)*6):6*pNum] #pagination
+
+    if (pNum < 1) | (pNum > pMax):
+        # raise RedirectException('/catalog/index.products.html/')
+        return HttpResponseRedirect('/catalog/index.products.html/')
 
     context = {
         'qry': qry,
         'cName': cName,
+        'pNum': pNum,
+        'pMax': pMax,
     }
     return request.dmp.render('index.products.html', context) #inherits from base_ajax

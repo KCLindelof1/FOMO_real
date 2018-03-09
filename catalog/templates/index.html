@@ -9,27 +9,28 @@
                 <ul id="categories">
                     <li class="${ 'activeCat' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
                     % for c in cat:
-                        <li class="${ 'activeCat' if category is None else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
+                        <li class="${ 'activeCat' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
                     % endfor
                 </ul>
             </div>
-            <div class="col-8" id="products">
-                <div id="catalog">
 
-                </div>
-            </div>
-            <div class="col-2">
+            <div class="col-4">
                 <div id="paginator" class = text-right>
-                    %if int(pNum) >= 1:
-                        <span id="previous_page"><i class="fas fa-arrow-left"></i></span>
-                    %endif
+##                     %if int(pNum) >= 1:
+##                         <span id="previous_page"><<<</span>
+##                     %endif
 
                         <a>Page <span id="currentPage">${ pNum }</span>  of ${ pMax}</a>
 
-                    %if int(pNum) < pMax:
-                        <span id="next_page"><i class="fas fa-arrow-right"></i></span>
+##                     %if int(pNum) < pMax:
+##                         <span id="next_page">>>></span>
+##                     %endif
+                </div>
+            </div>
 
-                    %endif
+            <div class="col-8" id="products">
+                <div id="catalog">
+
                 </div>
             </div>
         </div>
