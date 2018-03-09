@@ -1,23 +1,21 @@
-<%inherit file="base_ajax.htm" />
+ <%inherit file="base_ajax.htm" />
 
-## /This is what the tile output should be. Need to use a loop to create this though
-<%block name="content">
-
+ <%block name="content">
+##     <h1 class="text-center">
+##         %if gory == 'All Products':
+##             All Products
+##         %else:
+##             ${gory.name}
+##         %endif
+##     </h1>
+    <h2 class="text-center">${ cName }</h2>
+    <ul class="noBullets">
+    %for prod in qry:
+        <li class="product_tile">
+                <h4 class="text-center">${prod.name}</h4>
+                    <p class="text-right">$${prod.price}</p>
+                <img src="${prod.image_url()}" class="img-fluid"/>
+        </li>
+    %endfor
+    </ul>
 </%block>
-for
-<ul id="catalog_list">
-    <li class="product_tile">
-        <div><img class="product_image" src="/static/catalog/media/products/bananas.jpg"/></div>
-        <div class="product_tile">Bananas</div>
-        <div class="product_price alert alert-info">$912.29</div>
-        <div>(Sheet Music)</div>
-    </li>
-##     this would be the second tile on the page
-    <li class="product_tile">
-        <div><img class="product_image" src="/static/catalog/media/products/bananas.jpg"/></div>
-        <div class="product_tile">Bananas</div>
-        <div class="product_price alert alert-info">$912.29</div>
-        <div>(Sheet Music)</div>
-    </li>
-
-</ul>

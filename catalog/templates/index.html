@@ -1,26 +1,38 @@
 <%inherit file="base_app.html" />
 
-<%block name="content_left">
-    <h1>Categories</h1>
-    <ul id="category_list">
-        <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/">All Products</a></li>
-        % for c in cat:
-##             <li><a href="/catalog/index/${ cat.id }">${ cat.name}</a></li>
-            <li class="${ 'active' if category is None else '' }"><a href="/catalog/index/${ cat.id }">${ cat.name}</a></li>
-        % endfor
-    </ul>
-</%block>
 
-<%block name="content">
-    <h1 class="text-center">${ 'Products' if category is None else category.name }</h1>
+<%block name="content_top">
+    <h1>Products And Categories</h1><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <ul id="categories">
+                    <li class="${ 'activeCat' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
+                    % for c in cat:
+                        <li class="${ 'activeCat' if category is None else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
+                    % endfor
+                </ul>
+            </div>
+            <div class="col-8" id="products">
+                <div id="catalog">
 
-    <div id="paginator" class="text-right">
-        <a id="previous page"></a>
-        Page <span id="page_number">1</span> of ${ num_pages }
-        <a id="next_page"></a>
+                </div>
+            </div>
+            <div class="col-2">
+                <div id="paginator" class = text-right>
+                    %if int(pNum) >= 1:
+                        <span id="previous_page"><i class="fas fa-arrow-left"></i></span>
+                    %endif
+
+                        <a>Page <span id="currentPage">${ pNum }</span>  of ${ pMax}</a>
+
+                    %if int(pNum) < pMax:
+                        <span id="next_page"><i class="fas fa-arrow-right"></i></span>
+
+                    %endif
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="catalog_container">
-        <div id="catalog"></div>
-    </div>
 </%block>
