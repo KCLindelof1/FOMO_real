@@ -28,7 +28,7 @@ h4.utc-time {
     padding: 12px;
     border: 2px solid #cccccc;
     border-radius: 4px;
-    width: 335px;
+    width: 337px;
     vertical-align: top;
     min-height: 100px;
     height: 100%;
@@ -38,6 +38,18 @@ h4.utc-time {
     cursor: pointer;
 }
 
-.activeCat {
+.li:active {
     font-weight: bold;
+}
+
+.active {
+    font-weight: bolder;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.a:active {
+    font-weight: bolder;
+    font-size: 25px;
+    text-decoration: underline;
 }

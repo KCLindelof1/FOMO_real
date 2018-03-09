@@ -7,9 +7,9 @@
         <div class="row">
             <div class="col-2">
                 <ul id="categories">
-                    <li class="${ 'activeCat' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
+                    <li id="all_categories_category" class="${ 'active' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
                     % for c in cat:
-                        <li class="${ 'activeCat' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
+                        <li id="1_category" class="${ 'active' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
                     % endfor
                 </ul>
             </div>
@@ -17,13 +17,13 @@
             <div class="col-4">
                 <div id="paginator" class = text-right>
 ##                     %if int(pNum) >= 1:
-##                         <span id="previous_page"><<<</span>
+                        <span id="previous_page"><<<</span>
 ##                     %endif
 
                         <a>Page <span id="currentPage">${ pNum }</span>  of ${ pMax}</a>
 
 ##                     %if int(pNum) < pMax:
-##                         <span id="next_page">>>></span>
+                        <span id="next_page">>>></span>
 ##                     %endif
                 </div>
             </div>
