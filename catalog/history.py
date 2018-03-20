@@ -1,6 +1,4 @@
-
-
-
+from catalog import models as cmod
 
 
 class SimpleMiddleware:
@@ -12,6 +10,10 @@ class SimpleMiddleware:
         # Code to be executed for each request before
         # the view (and later middleware) are called.
 
+        recent_list = request.session.get('last_five', [])
+        request.last_five = []
+        for p in recent_list:
+            request.last_five.append(cmod.Product.objects.get(id=p))
         # Pull your last 5 products viewed here
         # load out of the session
 
@@ -22,40 +24,20 @@ class SimpleMiddleware:
         # pull the associated objects from the database [cmod.Product.objects.filter(productid=xx)]
         # request.last_five = [...list of products...]
 
-
-
-
-
-        # In catalog/templates/base_app.htm:
-        #     for loop through request.last_five and print the product thumbnails on the right
-
-
-
-
-
-
         response = self.get_response(request)
 
         # Code to be executed for each request/response after
         # the view is called.
 
+        last_five_ids = []
+        for r in request.last_five:
+            last_five_ids.append(r.id)
+
+        request.session['last_five'] = last_five_ids
         # Save the id's back to the session
         # save back into the session
 
         # convert request.last_five into a list of ids (convert product objects back into ids)
         # request.session['...'] = list of ids
-
-
-
-        # detail.py
-        # product (that they are looking at)
-        # remove if current product is already in the list
-        # request.last_five.insert(0, product)
-        # if length of list > 6 items, remove the last (6)
-        # display positions 1 - 5 (so its actually a list of 6)
-
-
-
-
 
         return response

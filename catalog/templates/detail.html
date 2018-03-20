@@ -1,6 +1,29 @@
-<%inherit file="base_ajax.htm" />
+<%inherit file="base_app.html" />
 
 <%block name="content">
+
+    ##     Product images
+    <div id="product_images_detail">
+        <ul class="float-left">
+            %for image in prod:
+                <img src="${prod.image_url()}" alt="Product Detail Image" class="img-fluid"/>
+            %endfor
+        </ul>
+    </div>
+
+    <div id="product_images_main">
+        <ul class="float-left">
+
+        </ul>
+    </div>
+
+
+    <div id="product_info">
+        <h1>${prod.name}</h1>
+        <h2>This $(prod.title)
+            (TYPE OF PRODUCT) is a (PRODUCT NAME)</h2>
+        <h3>Random info here.</h3>
+    </div>
 
     <h2 class="text-center">${ cName }</h2>
     <ul class="noBullets">
@@ -13,20 +36,6 @@
                 </li>
             </a>
         %endfor
-
-        <ul class="">
-        %for image in prod:
-            <img src="${prod.image_url()}" class="img-fluid"/>
-        %endfor
-
-    </ul>
-
-##     Product images
-    <ul class="">
-        %for image in prod:
-            <img src="${prod.image_url()}" alt="Product Detail Image"class="img-fluid"/>
-        %endfor
-    </ul>
 </%block>
 
 ## float the small images (in 1 div or ul) to the very left of the block

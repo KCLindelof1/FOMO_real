@@ -3,6 +3,7 @@ from django_mako_plus import view_function, jscontext
 from datetime import datetime
 from catalog import models as cmod
 import math
+import django.contrib.sessions.backends.signed_cookies
 
 
 @view_function
@@ -25,6 +26,7 @@ def process_request(request, cat_id=0, pNum=1):
         jscontext('pMax'): page,
         'currentPage': currentPage,
     }
+
     return request.dmp.render('index.html', context)
 
 @view_function
