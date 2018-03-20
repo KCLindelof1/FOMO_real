@@ -7,7 +7,7 @@ import math
 
 @view_function
 def process_request(request, prod_id=1):
-    
+
     # something with cookies here
     response.set_cookie()
     request.get_cookie()
