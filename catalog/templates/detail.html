@@ -1,0 +1,17 @@
+<%inherit file="base_ajax.htm" />
+
+<%block name="content">
+
+    <h2 class="text-center">${ cName }</h2>
+    <ul class="noBullets">
+        %for prod in qry:
+            <a href="/catalog/detail.html">
+                <li class="product_tile">
+                    <h4 class="text-center">${prod.name}</h4>
+                    <p class="text-right">$${prod.price}</p>
+                    <img src="${prod.image_url()}" class="img-fluid"/>
+                </li>
+            </a>
+        %endfor
+    </ul>
+</%block>

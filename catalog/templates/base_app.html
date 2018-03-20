@@ -1,4 +1,5 @@
 <%inherit file="/homepage/templates/base.htm" />
+<%! from catalog import models as cmod %>
 
 <%block name="main_attrs">class="no_columns"</%block>
 
@@ -9,23 +10,15 @@
     <li class="nav-item ${ 'active' if request.dmp.page == 'contact' else '' }"><a class="nav-link" href="/contact">Contact</a></li>
     <li class="nav-item ${ 'active' if request.dmp.page == 'faq' else '' }"><a class="nav-link" href="/faq">FAQ</a></li>
     <li class="nav-item ${ 'active' if request.dmp.page == 'sections' else '' }"><a class="nav-link" href="/sections">Sections</a></li>
-
 </%block>
 
 <%block name="content_left">
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <ul id="categories">
-                    <li id="all_categories_category" class="${ 'active' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
-                    % for c in cat:
-                        <li id="1_category" class="${ 'active' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
-                    % endfor
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    <ul id="categories">
+        <li id="all_categories_category" class="${ 'active' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
+        % for c in cat:
+            <li id="1_category" class="${ 'active' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
+        % endfor
+    </ul>
 </%block>
 
 <%block name="navbar_stuff">
