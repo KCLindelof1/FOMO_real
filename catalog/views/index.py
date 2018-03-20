@@ -53,3 +53,4 @@ def products(request, cat: cmod.Category=None, pNum: int=1):
         'pMax': pMax,
     }
     return request.dmp.render('index.products.html', context) #inherits from base_ajax
+# this is a test comment
