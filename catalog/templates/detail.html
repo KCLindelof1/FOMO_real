@@ -13,6 +13,19 @@
                 </li>
             </a>
         %endfor
+
+        <ul class="">
+        %for image in prod:
+            <img src="${prod.image_url()}" class="img-fluid"/>
+        %endfor
+
+    </ul>
+
+##     Product images
+    <ul class="">
+        %for image in prod:
+            <img src="${prod.image_url()}" alt="Product Detail Image"class="img-fluid"/>
+        %endfor
     </ul>
 </%block>
 

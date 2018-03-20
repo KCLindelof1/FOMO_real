@@ -12,13 +12,23 @@
     <li class="nav-item ${ 'active' if request.dmp.page == 'sections' else '' }"><a class="nav-link" href="/sections">Sections</a></li>
 </%block>
 
+## Load categories into left column
 <%block name="content_left">
     <ul id="categories">
         <li id="all_categories_category" class="${ 'active' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
-        % for c in cat:
-            <li id="1_category" class="${ 'active' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
+##         % for c in cat:
+        %for cat in cmod.Category.objects.order_by('name'):
+            <li id="1_category" class="${ 'active' if category == cat else '' }"><a href="/catalog/index/${cat.id}/">${ cat.name }</a></li>
         % endfor
     </ul>
+</%block>
+
+## Load product thumbnails into the right column
+<%block name="content_right">
+    <ul id="product_images">
+
+    </ul>
+
 </%block>
 
 <%block name="navbar_stuff">

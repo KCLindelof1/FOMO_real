@@ -9,7 +9,7 @@
 ##                 <ul id="categories">
 ##                     <li id="all_categories_category" class="${ 'active' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
 ##                     % for c in cat:
-##                         <li id="1_category" class="${ 'active' if category is c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
+##                         <li id="1_category" class="${ 'active' if category == c else '' }"><a href="/catalog/index/${c.id}/">${ c.name }</a></li>
 ##                     % endfor
 ##                 </ul>
 ##             </div>
