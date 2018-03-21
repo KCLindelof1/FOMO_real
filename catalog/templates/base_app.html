@@ -28,11 +28,44 @@
 ##  In catalog/templates/base_app.htm:
 ##      for loop through request.last_five and print the product thumbnails on the right
 <%block name="content_right">
-    <ul id="product_images">
+    <h2 class="text-center">Recently Viewed</h2>
 
-    </ul>
+    %if request.dmp.page == 'detail':
+        <ol id="recent_view">
+        %for p in request.last_five[1:6]:
+            <li class="recent_list">
+                <a href="/catalog/detail/${p.id}/">
+                    <img src="${p.image_url()}" class="img-fluid" />
+                    <p class="text-center">${p.name}</p>
+                </a>
+            </li>
+        %endfor
+        </ol>
+    %else:
+        <ol id="recent_view">
+        %for p in request.last_five[0:5]:
+            <li class="recent_list">
+                <a href="/catalog/detail/${p.id}/">
+                    <img src="${p.image_url()}" class="img-fluid" />
+                    <p class="text-center">${p.name}</p>
+                </a>
+            </li>
+        %endfor
+        </ol>
+    %endif
 
+##     <ol id="recent_view">
+##         %for p in recent:
+##             <li class="recent_list">
+##                 <a href="/catalog/detail/${p.id}/">
+##                     <img src="${p.image_url()}" class="img-fluid" />
+##                     <p class="text-center">${p.name}</p>
+##                 </a>
+##             </li>
+##         %endfor
+##     </ol>
 </%block>
+
 
 <%block name="navbar_stuff">
     <nav class="navbar navbar-default">

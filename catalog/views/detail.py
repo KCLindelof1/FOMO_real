@@ -5,17 +5,16 @@ from catalog import models as cmod
 import math
 
 
+
 @view_function
 def process_request(request, prod_id: cmod.Product, cat_id=0):
-
-    prod = cmod.Product.objects.filter(pid=cat.id)
 
     prod = prod_id
     img = prod.image_urls()
     category = cat_id
     cat = cmod.Category.objects.all()
     if prod in request.last_five:
-        response.last_five.remove(prod)
+        request.last_five.remove(prod)
     request.last_five.insert(0, prod)
 
     # detail.py

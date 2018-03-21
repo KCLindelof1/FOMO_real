@@ -5,7 +5,7 @@
     <h2 class="text-center">${ cName }</h2>
     <ul class="noBullets">
     %for prod in qry:
-        <a href="/catalog/detail/">
+        <a href="/catalog/detail/${prod.id}/">
             <li class="product_tile">
                 <h4 class="text-center">${prod.name}</h4>
                     <p class="text-right">$${prod.price}</p>

@@ -1,7 +1,7 @@
 from catalog import models as cmod
 
 
-class SimpleMiddleware:
+class LastFiveMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
         # One-time configuration and initialization.

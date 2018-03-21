@@ -2,40 +2,34 @@
 
 <%block name="content">
 
-    ##     Product images
-    <div id="product_images_detail">
+##     Product images
+    <div>
         <ul class="float-left">
-            %for image in prod:
-                <img src="${prod.image_url()}" alt="Product Detail Image" class="img-fluid"/>
+            %for i in img:
+                <li class="product_images_detail">
+                    <img src="${prod.image_url()}" alt="Product Detail Image" class="img-fluid"/>
+                </li>
+
             %endfor
         </ul>
     </div>
 
-    <div id="product_images_main">
+##     Main Product Image
+    <div>
         <ul class="float-left">
-
+            <li class="product_images_main">
+                <img src="${prod.image_url()}" alt="Main Product Detail Image" class="img-fluid"/>
+            </li>
         </ul>
     </div>
 
-
+##     Text for the product
     <div id="product_info">
-        <h1>${prod.name}</h1>
-        <h2>This $(prod.title)
-            (TYPE OF PRODUCT) is a (PRODUCT NAME)</h2>
-        <h3>Random info here.</h3>
+        <h1>${prod.name} |h}</h1>
+        <h3>This ${prod.TITLE} is a ${prod.name}</h3>
+        <h4>Random info here.</h4>
     </div>
 
-    <h2 class="text-center">${ cName }</h2>
-    <ul class="noBullets">
-        %for prod in qry:
-            <a href="/catalog/detail.html">
-                <li class="product_tile">
-                    <h4 class="text-center">${prod.name}</h4>
-                    <p class="text-right">$${prod.price}</p>
-                    <img src="${prod.image_url()}" class="img-fluid"/>
-                </li>
-            </a>
-        %endfor
 </%block>
 
 ## float the small images (in 1 div or ul) to the very left of the block
