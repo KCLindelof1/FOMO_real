@@ -7,27 +7,29 @@
         <ul class="float-left">
             %for i in img:
                 <li class="product_images_detail">
-                    <img src="${prod.image_url()}" alt="Product Detail Image" class="img-fluid"/>
+                    <img src="${i}" alt="Product Detail Image" class="img-fluid"/>
                 </li>
-
             %endfor
         </ul>
     </div>
 
 ##     Main Product Image
     <div>
-        <ul class="float-left">
+        <ul class="yoyoyoyoyo">
             <li class="product_images_main">
-                <img src="${prod.image_url()}" alt="Main Product Detail Image" class="img-fluid"/>
+                <img src="${i}" alt="Main Product Detail Image" class="img-fluid"/>
             </li>
         </ul>
-    </div>
-
-##     Text for the product
-    <div id="product_info">
-        <h1>${prod.name} |h}</h1>
-        <h3>This ${prod.TITLE} is a ${prod.name}</h3>
-        <h4>Random info here.</h4>
+    ##     Text for the product
+        <h1 id="Product_Name">${prod.name} |h}</h1>
+##         <h3>This ${prod.TITLE} is a ${prod.name}</h3>
+        <p id="Product_Description">${prod.description}</p>
+        %if prod.TITLE == 'Bulk Product':
+            <div class="form-group">
+                <label class="col-form-label" for="inputDefault">${prod.quantity}</label>
+                <input class="form-control" placeholder="${prod.quantity}" id="inputDefault" type="text">
+            </div>
+        %endif
     </div>
 
 </%block>

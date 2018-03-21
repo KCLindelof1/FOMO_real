@@ -35,7 +35,7 @@
         %for p in request.last_five[1:6]:
             <li class="recent_list">
                 <a href="/catalog/detail/${p.id}/">
-                    <img src="${p.image_url()}" class="img-fluid" />
+                    <img src="${p.image_url()}" alt="Recently Viewed Products" class="img-fluid" />
                     <p class="text-center">${p.name}</p>
                 </a>
             </li>
