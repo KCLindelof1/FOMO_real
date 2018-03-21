@@ -1,3 +1,7 @@
 #categories{
     list-style: none;
 }
+
+#recent_view {
+    display: flex;
+}

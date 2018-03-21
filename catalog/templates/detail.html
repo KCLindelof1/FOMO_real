@@ -14,22 +14,23 @@
     </div>
 
 ##     Main Product Image
-    <div>
-        <ul class="yoyoyoyoyo">
+    <div id="Product_detail_main">
+        <ul class="float-left">
             <li class="product_images_main">
                 <img src="${i}" alt="Main Product Detail Image" class="img-fluid"/>
             </li>
         </ul>
     ##     Text for the product
-        <h1 id="Product_Name">${prod.name} |h}</h1>
+        <h1 id="Product_Name">${prod.name}</h1>
 ##         <h3>This ${prod.TITLE} is a ${prod.name}</h3>
         <p id="Product_Description">${prod.description}</p>
-        %if prod.TITLE == 'Bulk Product':
+        %if prod.TITLE == 'BulkProduct':
             <div class="form-group">
-                <label class="col-form-label" for="inputDefault">${prod.quantity}</label>
+                <label class="col-form-label" for="inputDefault">Quantity: ${prod.quantity}</label>
                 <input class="form-control" placeholder="${prod.quantity}" id="inputDefault" type="text">
             </div>
         %endif
+        <button type="button" class="btn btn-primary">Buy</button>
     </div>
 
 </%block>

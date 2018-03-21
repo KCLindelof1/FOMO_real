@@ -11,3 +11,25 @@ img:hover {
 }
 
 .product_images_main
+
+
+.product_images_detail{
+    list-style: none;
+    display: inline-block;
+}
+
+.recent_list{
+    display: inline-block;
+    margin: 12px 18px;
+    padding: 12px;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    width: 225px;
+    vertical-align: top;
+    min-height: 100px;
+    height: 100%;
+}
+
+#Product_detail_main {
+    display: flex;
+}

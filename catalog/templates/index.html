@@ -1,10 +1,10 @@
 <%inherit file="base_app.html" />
 
 
-<%block name="content_top">
+<%block name="content">
     <h1>Products And Categories</h1><br><br>
     <div class="container">
-        <div class="row">
+##         <div class="row">
 ##             <div class="col-2">
 ##                 <ul id="categories">
 ##                     <li id="all_categories_category" class="${ 'active' if category is None else ''}"><a href="/catalog/index/">All Products</a></li>
@@ -28,19 +28,13 @@
                 </div>
             </div>
 
-            <div class="col-8" id="products">
+##             <div class="col-8" id="products">
+            <div id="products">
                 <div id="catalog">
 
                 </div>
             </div>
-        </div>
+##         </div>
     </div>
 
 </%block>
-
-## <%block name="content">
-##     <div class="col-8" id="products">
-##         <div id="catalog">
-##         </div>
-##     </div>
-## </%block>

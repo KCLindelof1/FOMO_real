@@ -29,10 +29,15 @@ h4.utc-time {
     padding: 12px;
     border: 2px solid #cccccc;
     border-radius: 4px;
-    width: 337px;
+    width: 225px;
     vertical-align: top;
     min-height: 100px;
     height: 100%;
+}
+
+img {
+    width: 70%;
+    height: 70%;
 }
 
 #previous_page, #next_page {

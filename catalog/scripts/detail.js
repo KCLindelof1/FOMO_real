@@ -18,13 +18,5 @@ $(function(context){
             var imageSrc = $('.product_images_main');
             imageSrc[0].innerHTML = this.innerHTML;
         });
-
-    // $(function(){
-    //     $('.imgThumbs').on('mouseenter', function() {
-    //         var thumbSrc = $('#mainImage');
-    //         thumbSrc[0].innerHTML = this.innerHTML;
-    //     });
-    // });
-
     }
 }(DMP_CONTEXT.get()));
